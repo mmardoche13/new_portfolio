@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio - Don-Christ Mahoungou</title>
+    <style>
+        :root{
+            --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#00d4ff; --glass: rgba(255,255,255,0.05);
+            --text:#e6eef8; --radius:14px; --border: rgba(255,255,255,0.08);
+        }
+        [data-theme="light"]{ --bg:#f5f7fb; --card:#ffffff; --muted:#546e7a; --accent:#0066ff; --glass: rgba(0,0,0,0.04); --text:#071029; --border: rgba(0,0,0,0.08); }
+        
+        *{box-sizing:border-box}
+        html{scroll-behavior: smooth;}
+        html,body{min-height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background:linear-gradient(180deg,var(--bg),#081023);color:var(--text);}
+        
+        /* Layout */
+        header{backdrop-filter: blur(10px); background:rgba(15, 23, 36, 0.8); border-bottom: 1px solid var(--border); padding:18px 6%; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:30}
+        [data-theme="light"] header {background: rgba(255,255,255,0.85);}
+
+        .brand{display:flex;gap:12px;align-items:center}
+        .avatar{width:50px;height:50px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7b61ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.2)}
+        
+        nav{display:flex;gap:20px;align-items:center}
+        nav a{color:var(--text);text-decoration:none;font-weight:500;font-size:0.95rem; transition: color 0.2s}
+        nav a:hover{color:var(--accent)}
+        .cta{background:linear-gradient(90deg,var(--accent),#7b61ff);padding:8px 16px;border-radius:8px;color:#fff !important; font-weight:600; cursor: pointer; border:none;}
+        
+        main{width:min(1200px,94%);margin:30px auto 80px;display:grid;grid-template-columns: 1fr 340px;gap:24px}
+        @media(max-width:920px){main{grid-template-columns:1fr} nav.desktop-only{display:none}}
+        
+        /* Cards */
+        .card{background:var(--card);padding:24px;border-radius:var(--radius);box-shadow:0 4px 20px rgba(0,0,0,0.2);border:1px solid var(--border); margin-bottom: 24px;}
+        
+        h1{margin:0;font-size:1.4rem;letter-spacing:-0.5px}
+        h2{margin-top:0;margin-bottom:16px;font-size:1.1rem; color:var(--accent); text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; font-weight: 700;}
+        h3{margin:0 0 4px 0; font-size: 1.1rem;}
+        
+        p{line-height: 1.6; color: var(--muted);}
+        p.lead{color:var(--text); font-size: 1.05rem; margin-top: 0;}
+        
+        ul.timeline {padding-left:18px; margin:0; list-style: none; padding: 0;}
+        ul.timeline li {position: relative; padding-left: 20px; margin-bottom: 20px; border-left: 2px solid var(--border); padding-bottom: 10px;}
+        ul.timeline li::before {content:''; position: absolute; left: -6px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent);}
+        
+        .date {font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; display: block;}
+        
+        /* Grid des Projets */
+        .project-grid {display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 10px;}
+        .project-card {
+            background: var(--glass); 
+            border: 1px solid var(--border); 
+            padding: 18px; 
+            border-radius: 10px; 
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex; flex-direction: column;
+        }
+        .project-card:hover {transform: translateY(-3px); border-color: var(--accent);}
+        .project-header {display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;}
+        .folder-icon {color: var(--accent); font-size: 1.2rem;}
+        .tech-stack {display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 12px;}
+        .tech-tag {font-size: 0.7rem; background: rgba(123, 97, 255, 0.15); color: var(--text); padding: 3px 8px; border-radius: 4px; font-weight: 500;}
+
+        /* Sidebar components */
+        .meta{display:flex;flex-direction:column;gap:10px;font-size:0.95rem}
+        .meta-item {display: flex; align-items: center; gap: 10px;}
+        .skills{display:flex;flex-wrap:wrap;gap:8px}
+        .chip{background:var(--glass);padding:6px 12px;border-radius:99px;border:1px solid var(--border);font-size:0.85rem; font-weight: 500;}
+        
+        /* Animations */
+        .fade-up{animation:fadeUp .6s ease both}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+        
+        /* Mobile Nav */
+        .hamburger{display:none;background:transparent;border:0;color:var(--text); font-size: 1.5rem; cursor: pointer;}
+        @media(max-width:920px){.hamburger{display:block}}
+        .nav-mobile{display:none;position:fixed;inset:70px 16px auto 16px;background:var(--card);padding:20px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.5); z-index: 100; border: 1px solid var(--border);}
+        .nav-mobile a{display:block;padding:12px 0; border-bottom: 1px solid var(--border);}
+        .show{display:block}
+        
+        footer{text-align:center;color:var(--muted);padding:40px 0; font-size: 0.9rem;}
+        .download-btn {display: block; text-align: center; width: 100%; padding: 10px; background: var(--glass); border: 1px dashed var(--accent); color: var(--accent); border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 10px;}
+    </style>
+</head>
+<body data-theme="dark">
+    <header>
+        <div class="brand">
+            <div class="avatar">DM</div>
+            <div>
+                <h1>Don-Christ Mahoungou</h1>
+                <div style="font-size:0.85rem;color:var(--muted)">Étudiant Cybersécurité & IA</div>
+            </div>
+        </div>
+
+        <nav>
+            <div class="desktop-only">
+                <a href="#profil">A propos</a>
+                <a href="#experience">Parcours</a>
+                <a href="#projets">Projets</a>
+                <a href="#competences">Compétences</a>
+            </div>
+            <button id="themeToggle" class="cta" onclick="toggleTheme()">☀/☾</button>
+            <button class="hamburger" aria-label="menu" onclick="toggleMobile()">☰</button>
+        </nav>
+    </header>
+
+    <div id="mobileNav" class="nav-mobile">
+        <a href="#profil" onclick="toggleMobile()">A propos</a>
+        <a href="#experience" onclick="toggleMobile()">Parcours</a>
+        <a href="#projets" onclick="toggleMobile()">Projets</a>
+        <a href="#competences" onclick="toggleMobile()">Compétences</a>
+        <a href="#contact" onclick="toggleMobile()">Contact</a>
+    </div>
+
+    <main>
+        <div class="content">
+            
+            <section class="card fade-up" id="profil">
+                <h2>Profil Professionnel</h2>
+                <p class="lead">
+                    Étudiant en 2e année de Bachelor en Cybersécurité et Intelligence Artificielle à l’ESEO Paris-Vélizy. 
+                    Passionné par l'administration système et la sécurité offensive/défensive.
+                </p>
+                <p>
+                    Je suis actuellement à la recherche d'un <strong>stage d’application de 4 à 6 mois à partir d’avril 2026</strong> 
+                    en tant qu’Administrateur Systèmes et Réseaux junior ou Assistant Cybersécurité.
+                </p>
+            </section>
+
+            <section class="card fade-up" id="experience" style="animation-delay: 0.1s">
+                <h2>Parcours & Formation</h2>
+                
+                <h3>Expériences Professionnelles</h3>
+                <ul class="timeline">
+                    <li>
+                        <span class="date">Juin 2023 - Sept 2023</span>
+                        <h3>Technicien Réseau (Stage)</h3>
+                        <div style="color:var(--accent); font-size:0.9rem; margin-bottom:4px">Congo Telecom, Pointe-Noire</div>
+                        <p style="margin:0; font-size:0.95rem">
+                            Configuration et maintenance d’équipements réseau (routeurs/switchs), assistance technique aux utilisateurs et intervention sur le câblage structuré.
+                        </p>
+                    </li>
+                </ul>
+
+                <h3 style="margin-top: 30px;">Formation Académique</h3>
+                <ul class="timeline">
+                    <li>
+                        <span class="date">2024 - 2026 (En cours)</span>
+                        <h3>Bachelor Solutions Numériques & Cybersécurité</h3>
+                        <div>ESEO, Vélizy-Villacoublay</div>
+                    </li>
+                    <li>
+                        <span class="date">2023 - 2024</span>
+                        <h3>Réseau & Maintenance Informatique</h3>
+                        <div>Institut C-TECH, Pointe-Noire</div>
+                    </li>
+                    <li>
+                        <span class="date">2022 - 2023</span>
+                        <h3>Licence 1 Informatique</h3>
+                        <div>Université de Louangou</div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="card fade-up" id="projets" style="animation-delay: 0.2s">
+                <h2>Projets Réalisés</h2>
+                <p style="margin-bottom: 20px;">Une sélection de projets académiques et personnels démontrant mes compétences techniques.</p>
+                
+                <div class="project-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Infrastructure & GLPI</h3>
+                            <span class="folder-icon">📂</span>
+                        </div>
+                        <p style="font-size:0.9rem">Déploiement complet d'une infrastructure Windows Server avec Active Directory, DNS et IIS. Mise en place d'une solution GLPI pour la gestion de parc avec inventaire automatique via FusionInventory.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Windows Server</span>
+                            <span class="tech-tag">Active Directory</span>
+                            <span class="tech-tag">GLPI</span>
+                            <span class="tech-tag">LDAP</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Gestion de Bibliothèque</h3>
+                            <span class="folder-icon">💻</span>
+                        </div>
+                        <p style="font-size:0.9rem">Développement d'une application de gestion de livres et d'emprunts. Création d'une base de données relationnelle et interface utilisateur en ligne de commande (CLI).</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Algorithmique</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Labo de Virtualisation</h3>
+                            <span class="folder-icon">☁️</span>
+                        </div>
+                        <p style="font-size:0.9rem">Création d'environnements virtualisés complexes pour simuler des réseaux d'entreprise sécurisés. Configuration de NAT, Bridge et réseaux internes.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">VMware</span>
+                            <span class="tech-tag">VirtualBox</span>
+                            <span class="tech-tag">Réseaux</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Application Java POO</h3>
+                            <span class="folder-icon">☕</span>
+                        </div>
+                        <p style="font-size:0.9rem">Conception d'une application orientée objet respectant les principes SOLID. Gestion des classes, héritage et polymorphisme pour un cas d'usage métier.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">UML</span>
+                            <span class="tech-tag">Git</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Analyse de Données IA</h3>
+                            <span class="folder-icon">🤖</span>
+                        </div>
+                        <p style="font-size:0.9rem">Initiation au Machine Learning : nettoyage de dataset et création de modèles prédictifs simples (régression/classification) pour analyser des tendances.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Pandas</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Analyse de Trames</h3>
+                            <span class="folder-icon">🔍</span>
+                        </div>
+                        <p style="font-size:0.9rem">Analyse approfondie de trafic réseau via Wireshark pour identifier des anomalies et comprendre les protocoles TCP/IP (Handshake, DNS, HTTP).</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">TCP/IP</span>
+                            <span class="tech-tag">Sécurité</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <aside>
+            <div class="card fade-up" id="contact" style="position:sticky; top:90px">
+                <h2>Coordonnées</h2>
+                <div class="meta">
+                    <div class="meta-item">
+                        <span>📍</span> 
+                        <span>78990 Élancourt, France</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>📧</span> 
+                        <a href="mailto:mmardoche14@gmail.com" style="color:var(--text); text-decoration:none; border-bottom:1px dotted var(--muted)">mmardoche14@gmail.com</a>
+                    </div>
+                    <div class="meta-item">
+                        <span>📱</span> 
+                        <span>+33 6 04 41 16 39</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🔗</span> 
+                        <a href="https://www.linkedin.com/in/don-christ-mardoche-mahoungou-251194332" target="_blank" style="color:var(--accent); text-decoration:none">LinkedIn Profile</a>
+                    </div>
+                </div>
+
+                <a href="CV_Pro.pdf" download class="download-btn">
+                    📄 Télécharger mon CV
+                </a>
+
+                <div style="margin-top:24px" id="competences">
+                    <h2>Compétences Techniques</h2>
+                    <div style="margin-bottom:12px">
+                        <h3 style="font-size:0.85rem; color:var(--muted); text-transform:uppercase">Système & Réseau</h3>
+                        <div class="skills">
+                            <span class="chip">Windows Server</span>
+                            <span class="chip">Linux / Bash</span>
+                            <span class="chip">Active Directory</span>
+                            <span class="chip">TCP/IP & DNS</span>
+                            <span class="chip">Virtualisation</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom:12px">
+                        <h3 style="font-size:0.85rem; color:var(--muted); text-transform:uppercase">Développement & IA</h3>
+                        <div class="skills">
+                            <span class="chip">Python</span>
+                            <span class="chip">Java</span>
+                            <span class="chip">C</span>
+                            <span class="chip">SQL</span>
+                            <span class="chip">Scikit-learn</span>
+                            <span class="chip">Git</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top:24px">
+                    <h2>Intérêts</h2>
+                    <div class="skills">
+                        <span class="chip">🎮 Gaming</span>
+                        <span class="chip">🛡️ Veille Cybersécurité</span>
+                        <span class="chip">🏀 Sport</span>
+                        <span class="chip">📚 Lecture</span>
+                        <span class="chip">✈️ Voyages</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <p>© 2026 Don-Christ Mahoungou — Portfolio Étudiant</p>
+    </footer>
+
+    <script>
+        function toggleTheme(){
+            const body = document.body;
+            const current = body.getAttribute('data-theme') || 'dark';
+            body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+            localStorage.setItem('theme', body.getAttribute('data-theme'));
+        }
+        
+        (function(){
+            const saved = localStorage.getItem('theme');
+            if(saved) document.body.setAttribute('data-theme', saved);
+        })();
+
+        function toggleMobile(){
+            document.getElementById('mobileNav').classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
