@@ -1,0 +1,23 @@
+name: Test Docker Build
+
+# Ce script se lance à chaque "push" sur la branche main
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest  # GitHub prête un serveur Linux virtuel
+    
+    steps:
+      # Étape 1 : GitHub récupère le code
+      - name: Récupération du code
+        uses: actions/checkout@v3
+
+      # Étape 2 : GitHub essaie de construire l'image Docker
+      - name: Build de l'image Docker
+        run: docker build . --file Dockerfile --tag mon-portfolio:test
+
+      # Étape 3 : Si le build réussit, affiche un message
+      - name: Vérification réussie
+        run: echo "L'image Docker se construit parfaitement !"
