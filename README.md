@@ -2,7 +2,7 @@
 ### Étudiant en Cybersécurité & IA | Futur Administrateur Systèmes & Réseaux
 
 [![Portfolio Status](https://img.shields.io/badge/Portfolio-En_Ligne-success?style=for-the-badge&logo=render)](https://ton-portfolio.onrender.com)
-[![CI/CD](https://img.shields.io/github/actions/workflow/status/TON_PSEUDO/portfolio/docker-test.yml?style=for-the-badge&logo=github&label=Build%20Docker)](https://github.com/TON_PSEUDO/portfolio/actions)
+[![CI/CD](https://img.shields.io/github/actions/workflow/status/TON_PSEUDO/portfolio/docker-test.yml?style=for-the-badge&logo=github&label=Build%20Docker)](https://github.com/mmardoche13)
 
 Basé à **Élancourt (78)**, je suis un passionné d'infrastructure et de sécurité. Je combine des compétences en administration système classique (Windows/Linux) avec des pratiques modernes (Docker, CI/CD).
 
