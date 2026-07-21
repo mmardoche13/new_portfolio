@@ -78,12 +78,12 @@ Conception d'une application logicielle robuste respectant les principes de l'Ar
 ## 📜 Certifications & Formation
 
 * **SecNumacadémie** (ANSSI) - *En cours*
-* [cite_start]**Bachelor Solutions Numériques & Cybersécurité** - ESEO Paris-Vélizy (2024-2026)
-* [cite_start]**Réseau et Maintenance Informatique** - Institut C-TECH (2023-2024) 
+* **Bachelor Solutions Numériques & Cybersécurité** - ESEO Paris-Vélizy (2024-2026)
+* **Réseau et Maintenance Informatique** - Institut C-TECH (2023-2024) 
 
 ---
 
 ### 📫 Me contacter
-* [cite_start]**LinkedIn :** [linkedin.com/in/don-christ-mardoche](https://linkedin.com/in/don-christ-mardoche-mahoungou-251194332) [cite: 265]
-* [cite_start]**Email :** mmardoche14@gmail.com [cite: 265]
+* **LinkedIn :** [linkedin.com/in/don-christ-mardoche](https://linkedin.com/in/don-christ-mardoche-mahoungou-251194332) 
+* **Email :** mmardoche14@gmail.com 
 * **CV PDF :** [Télécharger mon CV](lien_vers_ton_cv_si_tu_veux)
