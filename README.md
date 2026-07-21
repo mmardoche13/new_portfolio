@@ -37,17 +37,17 @@ Une démonstration pratique d'un cycle de déploiement moderne. Le site n'est pa
 ---
 
 ### 2. 🏢 Infrastructure GLPI & Virtualisation
-[cite_start]*Projet pilote de gestion de parc informatique pour l'entreprise fictive "TechnoCity"[cite: 68, 79].*
+*Projet pilote de gestion de parc informatique pour l'entreprise fictive "TechnoCity".*
 
 Déploiement complet d'une solution de gestion de parc et de Helpdesk sur une infrastructure virtualisée.
-- [cite_start]**Architecture :** Serveur **Debian 12** avec pile LAMP (Apache, MariaDB, PHP)[cite: 108].
+- **Architecture :** Serveur **Debian 12** avec pile LAMP (Apache, MariaDB, PHP).
 - **Fonctionnalités :**
-  - [cite_start]Inventaire automatisé via **GLPI Agent** déployé sur clients Windows 10[cite: 138, 141].
-  - [cite_start]Gestion du cycle de vie des tickets (Incidents & Demandes de service)[cite: 166].
-  - [cite_start]Gestion des utilisateurs (Profils Tech, Admin, Self-Service) sans AD[cite: 121].
+  - Inventaire automatisé via **GLPI Agent** déployé sur clients Windows 10.
+  - Gestion du cycle de vie des tickets (Incidents & Demandes de service).
+  - Gestion des utilisateurs (Profils Tech, Admin, Self-Service) sans AD.
 - **Sécurité & Maintenance :**
-  - [cite_start]Script Bash pour l'automatisation des sauvegardes SQL[cite: 224].
-  - [cite_start]Planification via **Cron** et sécurisation des identifiants (`.my.cnf`)[cite: 228, 230].
+  - Script Bash pour l'automatisation des sauvegardes SQL.
+  - Planification via **Cron** et sécurisation des identifiants (`.my.cnf`).
 
 > **Mots-clés :** `Linux Debian` `GLPI 11` `MariaDB` `Bash Scripting` `Cron`
 
@@ -64,12 +64,12 @@ Mise en place d'une passerelle de sécurité pour segmenter et protéger un rés
 ---
 
 ### 4. 🧬 Gestion de Laboratoire (Java POO)
-[cite_start]*Application de gestion pour un laboratoire biologique[cite: 13].*
+*Application de gestion pour un laboratoire biologique.*
 
 Conception d'une application logicielle robuste respectant les principes de l'Architecture en Couches.
 - **Architecture :** Séparation claire entre les Données (Model), la Logique (Service) et l'Interface.
-- [cite_start]**POO Avancée :** Utilisation intensive du **Polymorphisme** et de l'**Abstraction** pour gérer différents types de tests biologiques[cite: 16].
-- [cite_start]**Algorithmique :** Implémentation de fonctions de recherche multicritères et CRUD complet[cite: 17].
+- **POO Avancée :** Utilisation intensive du **Polymorphisme** et de l'**Abstraction** pour gérer différents types de tests biologiques.
+- **Algorithmique :** Implémentation de fonctions de recherche multicritères et CRUD complet.
 
 > **Mots-clés :** `Java SE` `UML` `Clean Code` `Git`
 
@@ -78,8 +78,8 @@ Conception d'une application logicielle robuste respectant les principes de l'Ar
 ## 📜 Certifications & Formation
 
 * **SecNumacadémie** (ANSSI) - *En cours*
-* [cite_start]**Bachelor Solutions Numériques & Cybersécurité** - ESEO Paris-Vélizy (2024-2026) [cite: 270]
-* [cite_start]**Réseau et Maintenance Informatique** - Institut C-TECH (2023-2024) [cite: 270]
+* [cite_start]**Bachelor Solutions Numériques & Cybersécurité** - ESEO Paris-Vélizy (2024-2026)
+* [cite_start]**Réseau et Maintenance Informatique** - Institut C-TECH (2023-2024) 
 
 ---
 
